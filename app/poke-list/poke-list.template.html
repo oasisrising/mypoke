@@ -1,0 +1,44 @@
+<form novalidate name="form" ng-submit="form.$valid && addPoke(poke)">
+  <div>
+    <label>Name</label>
+    <input type="text" ng-model="poke.name" required />
+  </div>
+
+  <div>
+    <label>Number</label>
+    <input type="number" ng-model="poke.number" required />
+  </div>
+
+  <div>
+    <label>Type</label>
+    <input type="text" ng-model="poke.type" required />
+  </div>
+
+  <div>
+    <label>Description</label>
+    <input type="text" ng-model="poke.description" required />
+  </div>
+  
+  <div ng-hide="form.$valid">Form is invalid</div>
+
+  <div>
+    <input type="submit" value="Save" ng-show="editId==undefined"/>
+    <input type="button" value="update" ng-click="updatePoke(poke)" ng-hide="editId==undefined" />
+  </div>
+</form>
+
+<div ng-repeat="poke in pokes">
+
+  <h1>{{poke.name}}</h1>
+  <dl>
+    <dt>Number</dt>
+      <dd>{{poke.number}}</dd>
+    <dt>Type</dt>
+      <dd>{{poke.type}}</dd>
+    <dt>Description</dt>
+      <dd>{{poke.description}}</dd>
+  </dl>
+  
+  <a href="javascript:void(0);" ng-click="editPoke($index)">Edit</a>
+  <a href="javascript:void(0);" ng-click="deletePoke($index)">Delete</a>
+</div>
